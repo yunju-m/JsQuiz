@@ -23,4 +23,27 @@ $(function () {
             }
         });
     });
+
+    $("#endBtn").click(function () {
+        Swal.fire({
+            title: "Quiz 게임 종료",
+            text: "정말로 종료하시겠습니까?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '승인',
+            cancelButtonText: '취소',
+            reverseButtons: true, // 버튼 순서 거꾸로
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    '퀴즈 프로그램을 종료합니다.',
+                    '로그인 페이지로 이동합니다.'
+                ).then(() => {
+                    window.location.href = 'jsquizLogin.html';
+                });
+            }
+        })
+    });
 });
