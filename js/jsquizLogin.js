@@ -16,7 +16,9 @@ $(function () {
                     '퀴즈 프로그램에 접속합니다.',
                     `${$("#name").val()}님 환영합니다.`,
                     'success'
-                )
+                ).then(() => {
+                    window.location.href = 'jsquizRank.html';
+                });
             }
         })
     });
