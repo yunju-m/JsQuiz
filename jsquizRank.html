@@ -7,14 +7,78 @@
     <title>퀴즈 프로그램 로비</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="js/jsquizLogin.js"></script>
+    <script src="js/jsquizRank.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jsquizLogin.css" />
+    <link rel="stylesheet" href="css/jsquizRank.css" />
 </head>
 
 <body>
-    <h1 class="text-5xl font-extrabold dark:text-white">&#128175; Quiz 프로그램 로비 화면</h1>
+    <h1 class="text-1rem font-extrabold dark:text-white">&#128175; Quiz 프로그램</h1>
+    <div class="quiz-container">
+        <div class="container">
+            <div class="content-container">
+                <h1 class="text-3xl font-extrabold dark:text-white">&#127894; Quiz Rank</h1>
+                <div class="rank-container">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <thead
+                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        Rank
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Name
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Score
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        1
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        참가자1
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        100
+                                    </td>
+                                </tr>
+                                <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        2
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        참가자2
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        94
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button id="startBtn"
+                    class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 border-b-4 border-gray-900 hover:border-gray-700 rounded">
+                    도전
+                </button>
+                <button id="endBtn"
+                    class="bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 border-b-4 border-gray-900 hover:border-gray-700 rounded">
+                    종료
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

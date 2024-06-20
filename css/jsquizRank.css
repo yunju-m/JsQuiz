@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.quiz-container {
+    display: flex;
+    height: 95%;
+    justify-content: center;
+}
+
+.container {
+    width: 600px;
+    max-width: 100%;
+    background-color: lightgoldenrodyellow;
+}
+
+.content-container {
+    height: 85%;
+    text-align: center;
+}
+
+.rank-container {
+    margin: 20px;
+    border: solid #b0b0b0df;
+}
+
+.btn-container {
+    text-align: center;
+    height: 15%;
+}
+
+#endBtn {
+    margin-left: 50px;
+}
