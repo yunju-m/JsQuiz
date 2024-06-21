@@ -7,6 +7,7 @@
     <title>퀴즈 프로그램 문제 화면</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/jsquizProblem.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
@@ -17,8 +18,8 @@
     <h1 class="text-1rem font-extrabold dark:text-white">&#128175; Quiz 프로그램</h1>
     <div class="container">
         <div class="countAndtimer-container">
-            <h1 class="text-2xl font-extrabold dark:text-white">Q) 1/10</h1>
-            <h1 class="text-2xl font-extrabold dark:text-white">timer</h1>
+            <h1 id="problemCnt" class="text-2xl font-extrabold dark:text-white">Q) 1/10</h1>
+            <h1 id="time" class="text-2xl font-extrabold dark:text-white">10초</h1>
         </div>
         <div class="content-container grid grid-rows-5">
             <div class="problem-container row-span-3">
