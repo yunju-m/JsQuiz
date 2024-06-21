@@ -2,10 +2,12 @@ let timer = null;
 let seconds = 10;
 let problemCnt = 1;
 let randomQuizList = [];
+let score = 0;
 
 $(function () {
     initQuizList();
     $('#nextBtn').on('click', function () {
+        calculateScore();
         printNextProblem();
     });
     timer = setInterval(() => {
@@ -67,6 +69,7 @@ function printEndProblem() {
             `,
         didOpen: () => {
             $('body').attr("class", "");
+            updateUserScore();
         }
     }).then((result) => {
         if (result.isConfirmed) {
@@ -103,6 +106,7 @@ function printProblemEvery10Sec() {
     }
     seconds--;
     if (seconds === 0) {
+        calculateScore();
         seconds = 10;
         problemCnt++;
     }
@@ -115,4 +119,30 @@ function printProblemEvery10Sec() {
 // 문제 출력 함수
 function printProblem() {
     $("#problemArea").html(randomQuizList[problemCnt - 1].question);
+    $("#answer").val('');
+}
+
+// 사용자 답안 확인하는 함수
+function calculateScore() {
+    console.log(randomQuizList);
+    const userAnswer = $("#answer").val();
+    const quizAnswer = randomQuizList[problemCnt - 1].answer;
+    if (userAnswer == quizAnswer) {
+        console.log("정답!!");
+        ++score;
+    } else {
+        console.log("땡!!");
+    }
+}
+
+// 현재 사용자 점수 갱신 함수
+function updateUserScore() {
+    const userList = getUserList("userList");
+    const userListLeng = userList.length;
+    if (userList.score < score) {
+        const userObj = new User(userList[userListLeng - 1].uid,
+            userList[userListLeng - 1].name,
+            score);
+        createUserObj(userObj);
+    }
 }

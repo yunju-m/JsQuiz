@@ -18,7 +18,12 @@ function createUserObj(user) {
 // localStorage에 사용자 저장 함수
 function addUser(userObj) {
     const userList = getUserList();
-    userList[userList.length] = userObj;
+    const userIndex = userList.findIndex(user => user.uid === userObj.uid);
+    if (userIndex !== -1) {
+        userList[userIndex] = userObj;
+    } else {
+        userList.push(userObj);
+    }
     localStorage.setItem("userList", JSON.stringify(userList));
 }
 
