@@ -7,6 +7,7 @@ $(function () {
             timer: 5000,
             timerProgressBar: true,
             didOpen: () => {
+                $('body').attr("class", "");
                 Swal.showLoading();
                 const timer = Swal.getPopup().querySelector("b");
                 timer.textContent = 5;
@@ -35,12 +36,18 @@ $(function () {
             confirmButtonText: '승인',
             cancelButtonText: '취소',
             reverseButtons: true, // 버튼 순서 거꾸로
+            didOpen: () => {
+                $('body').attr("class", "");
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    '퀴즈 프로그램을 종료합니다.',
-                    '로그인 페이지로 이동합니다.'
-                ).then(() => {
+                Swal.fire({
+                    title: '퀴즈 프로그램을 종료합니다.',
+                    text: '로그인 페이지로 이동합니다.',
+                    didOpen: () => {
+                        $('body').attr("class", "");
+                    }
+                }).then(() => {
                     window.location.href = 'jsquizLogin.html';
                 });
             }

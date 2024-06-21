@@ -10,12 +10,19 @@ $(function () {
             confirmButtonText: '승인',
             cancelButtonText: '취소',
             reverseButtons: true, // 버튼 순서 거꾸로
+            didOpen: () => {
+                $('body').attr("class", "");
+            }
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    '퀴즈 프로그램에 접속합니다.',
-                    `${$("#name").val()}님 환영합니다.`,
-                    'success'
+                Swal.fire({
+                    title: '퀴즈 프로그램에 접속합니다.',
+                    text: `${$("#name").val()}님 환영합니다.`,
+                    icon: 'success',
+                    didOpen: () => {
+                        $('body').attr("class", "");
+                    }
+                }
                 ).then(() => {
                     window.location.href = 'jsquizRank.html';
                 });
