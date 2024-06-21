@@ -57,6 +57,7 @@ function printNextProblem() {
 function printEndProblem() {
     Swal.fire({
         title: "게임 종료",
+        text: `점수: ${score} / 10`,
         width: 600,
         padding: "2em",
         color: "#716add",
@@ -128,10 +129,10 @@ function calculateScore() {
     const userAnswer = $("#answer").val();
     const quizAnswer = randomQuizList[problemCnt - 1].answer;
     if (userAnswer == quizAnswer) {
-        console.log("정답!!");
+        printTrueAlert();
         ++score;
     } else {
-        console.log("땡!!");
+        printWrongAlert();
     }
 }
 
@@ -139,10 +140,33 @@ function calculateScore() {
 function updateUserScore() {
     const userList = getUserList("userList");
     const userListLeng = userList.length;
-    if (userList.score < score) {
-        const userObj = new User(userList[userListLeng - 1].uid,
-            userList[userListLeng - 1].name,
+    const currentUserList = userList[userListLeng - 1];
+
+    if (currentUserList.score < score) {
+        const userObj = new User(currentUserList.uid,
+            currentUserList.name,
             score);
         createUserObj(userObj);
     }
+}
+
+function printTrueAlert() {
+    Swal.fire({
+        icon: "success",
+        title: "정답입니다!",
+        didOpen: () => {
+            $('body').attr("class", "");
+        }
+    });
+}
+
+function printWrongAlert() {
+    Swal.fire({
+        icon: "error",
+        title: "오답",
+        text: `정답 : ${randomQuizList[problemCnt - 1].answer}`,
+        didOpen: () => {
+            $('body').attr("class", "");
+        }
+    });
 }
