@@ -24,6 +24,8 @@ $(function () {
                     }
                 }
                 ).then(() => {
+                    const user = new User(Date.now(), $("#name").val(), 0);
+                    createUserObj(user);
                     window.location.href = 'jsquizRank.html';
                 });
             }
