@@ -19,6 +19,8 @@ function printNextProblem() {
         seconds = 10;
         problemCnt++;
         printProblemEvery10Sec();
+    } else {
+        printLastProblem();
     }
 }
 
@@ -43,6 +45,25 @@ function printEndProblem() {
         if (result.isConfirmed) {
             window.location.href = 'jsquizRank.html';
         }
+    });
+}
+
+// 마지막 문제에서 다음 문제 클릭 시 안내창 출력 함수
+function printLastProblem() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "warning",
+        title: "마지막 문제입니다."
     });
 }
 
