@@ -22,6 +22,30 @@ function printNextProblem() {
     }
 }
 
+// 종료 결과 창 출력 함수
+function printEndProblem() {
+    Swal.fire({
+        title: "게임 종료",
+        width: 600,
+        padding: "2em",
+        color: "#716add",
+        background: "#fff",
+        backdrop: `
+            rgba(0,0,123,0.4)
+            url("/image/EndImg.gif")
+            center top
+            no-repeat
+            `,
+        didOpen: () => {
+            $('body').attr("class", "");
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = 'jsquizRank.html';
+        }
+    });
+}
+
 // 10초마다 문제 재생성 함수
 function printProblemEvery10Sec() {
     $('#time').html(`${seconds}초`);
@@ -36,6 +60,7 @@ function printProblemEvery10Sec() {
     }
     if (problemCnt > 10) {
         clearInterval(timer);
+        printEndProblem();
     }
 }
 
