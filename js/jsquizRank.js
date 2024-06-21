@@ -1,4 +1,5 @@
 $(function () {
+    printRank();
     $("#startBtn").click(function () {
         let timerInterval;
         Swal.fire({
@@ -54,3 +55,18 @@ $(function () {
         })
     });
 });
+
+// 10위 랭킹 출력 함수
+function printRank() {
+    const userList = getUserList();
+    const userListLeng = userList.length < 10 ? userList.length : 10;
+    for (let i = 0; i < userListLeng; i++) {
+        $("tbody").append(`
+            <tr>
+                <th scope="row">${i + 1}</th>
+                <td>${userList[i].name}</td>
+                <td>${userList[i].score}</td>
+            </tr>
+        `);
+    }
+}
