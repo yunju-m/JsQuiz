@@ -1,17 +1,44 @@
 let timer = null;
 let seconds = 10;
 let problemCnt = 1;
-let randNumList = [];
+let randomQuizList = [];
 
 $(function () {
+    initQuizList();
     $('#nextBtn').on('click', function () {
-        console.log("다음문제!!");
         printNextProblem();
     });
     timer = setInterval(() => {
         printProblemEvery10Sec();
     }, 1000);
 });
+
+// 초기 50문제 localStorage에 저장 함수
+function initQuizList() {
+    axios.get("/quizJson.txt")
+        .then(function (result) {
+            for (let i = 0; i < 50; i++) {
+                let quiz = result.data[i];
+                let newQuiz = new Quiz(quiz.qid, quiz.question, quiz.answer);
+                createQuizObj(newQuiz);
+            }
+        }).then(function () {
+            createRandomQuizList();
+        });
+}
+
+// 랜덤 10개 문제 배열 생성 함수
+function createRandomQuizList() {
+    const quizList = getQuizList();
+    for (let i = 0; i < 10; i++) {
+        let randomQid = Math.floor(Math.random() * 51);
+        if (randomQuizList.includes(quizList[randomQid])) {
+            i--;
+        } else {
+            randomQuizList.push(quizList[randomQid]);
+        }
+    }
+}
 
 // 즉시 다음문제 생성 함수
 function printNextProblem() {
@@ -87,20 +114,5 @@ function printProblemEvery10Sec() {
 
 // 문제 출력 함수
 function printProblem() {
-    axios.get("/quizJson.txt")
-        .then(function (result) {
-            const randNum = randNumFunc();
-            $("#problemArea").html(result.data[randNum].question);
-        });
-}
-
-// 문제 랜덤 함수
-function randNumFunc() {
-    const randNum = Math.floor(Math.random() * 51);
-    if (randNumList.includes(randNum)) {
-        return randNumFunc();
-    } else {
-        randNumList.push(randNum);
-        return randNum;
-    }
+    $("#problemArea").html(randomQuizList[problemCnt - 1].question);
 }
