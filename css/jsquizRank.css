@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    background-color: #f0f0f0;
 }
 
 .quiz-container {
@@ -13,7 +14,6 @@ body {
 .container {
     width: 600px;
     max-width: 100%;
-    background-color: lightgoldenrodyellow;
 }
 
 .content-container {
@@ -74,6 +74,11 @@ td {
     height: 15%;
 }
 
+#startBtn {
+    width: 20%;
+}
+
 #endBtn {
+    width: 20%;
     margin-left: 50px;
 }
