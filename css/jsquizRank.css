@@ -41,6 +41,22 @@ thead {
 tbody tr {
     background-color: white;
     border-bottom-width: 1px;
+    color: black;
+}
+
+tbody tr:nth-child(1) {
+    font-weight: bold;
+    color: goldenrod;
+}
+
+tbody tr:nth-child(2) {
+    font-weight: bold;
+    color: gray;
+}
+
+tbody tr:nth-child(3) {
+    font-weight: bold;
+    color: #964b00;
 }
 
 tbody th {
