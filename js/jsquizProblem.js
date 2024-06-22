@@ -154,6 +154,7 @@ function printTrueAlert() {
     Swal.fire({
         icon: "success",
         title: "정답입니다!",
+        timer: 1000,
         didOpen: () => {
             $('body').attr("class", "");
         }
@@ -164,6 +165,7 @@ function printWrongAlert() {
     Swal.fire({
         icon: "error",
         title: "오답",
+        timer: 1000,
         text: `정답 : ${randomQuizList[problemCnt - 1].answer}`,
         didOpen: () => {
             $('body').attr("class", "");
