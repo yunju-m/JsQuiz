@@ -22,8 +22,20 @@ body {
 }
 
 .rank-container {
+    height: 80%;
     margin: 20px;
-    border: solid #b0b0b0df;
+}
+
+.rank-div {
+    height: 100%;
+}
+
+.rank-table-container {
+    height: 100%;
+}
+
+thead {
+    background-color: ivory;
 }
 
 tbody tr {
@@ -39,8 +51,6 @@ tbody th,
 td {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
 }
 
 .btn-container {
