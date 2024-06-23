@@ -60,13 +60,13 @@ $(function () {
 function printRank() {
     const userList = getUserList();
     userList.sort((user1, user2) => user2.score - user1.score);
-    const userListLeng = userList.length < 10 ? userList.length : 10;
-    for (let i = 0; i < userListLeng; i++) {
+    for (let i = 0; i < 10; i++) {
+        const user = userList[i] || { name: '', score: '' };
         $("tbody").append(`
             <tr>
                 <th scope="row">${i + 1}</th>
-                <td>${userList[i].name}</td>
-                <td>${userList[i].score}</td>
+                <td>${user.name}</td>
+                <td>${user.score}</td>
             </tr>
         `);
     }
