@@ -8,10 +8,10 @@ $(function () {
     initQuizList();
     $('#nextBtn').on('click', function () {
         calculateScore();
-        printNextProblem();
+        printNextQuiz();
     });
     timer = setInterval(() => {
-        printProblemEvery10Sec();
+        printQuizEvery10Sec();
     }, 1000);
 });
 
@@ -43,18 +43,18 @@ function createRandomQuizList() {
 }
 
 // 즉시 다음문제 생성 함수
-function printNextProblem() {
+function printNextQuiz() {
     if (problemCnt < 10) {
         seconds = 10;
         problemCnt++;
-        printProblemEvery10Sec();
+        printQuizEvery10Sec();
     } else {
-        printLastProblem();
+        printLastQuizAlert();
     }
 }
 
 // 종료 결과 창 출력 함수
-function printEndProblem() {
+function printEndQuiz() {
     Swal.fire({
         title: "게임 종료",
         text: `점수: ${score} / 10`,
@@ -80,7 +80,7 @@ function printEndProblem() {
 }
 
 // 마지막 문제에서 다음 문제 클릭 시 안내창 출력 함수
-function printLastProblem() {
+function printLastQuizAlert() {
     const Toast = Swal.mixin({
         toast: true,
         position: "top-end",
@@ -99,11 +99,11 @@ function printLastProblem() {
 }
 
 // 10초마다 문제 재생성 함수
-function printProblemEvery10Sec() {
+function printQuizEvery10Sec() {
     $('#time').html(`${seconds}초`);
     if (seconds === 10) {
         $('#problemCnt').html(`Q) ${problemCnt}/10`);
-        printProblem();
+        printQuiz();
     }
     seconds--;
     if (seconds === 0) {
@@ -113,12 +113,12 @@ function printProblemEvery10Sec() {
     }
     if (problemCnt > 10) {
         clearInterval(timer);
-        printEndProblem();
+        printEndQuiz();
     }
 }
 
 // 문제 출력 함수
-function printProblem() {
+function printQuiz() {
     $("#problemArea").html(randomQuizList[problemCnt - 1].question);
     $("#answer").val('');
 }
