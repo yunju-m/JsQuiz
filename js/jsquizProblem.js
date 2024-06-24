@@ -155,6 +155,7 @@ function printTrueAlert() {
         icon: "success",
         title: "정답입니다!",
         timer: 1000,
+        showConfirmButton: false,
         didOpen: () => {
             $('body').attr("class", "");
         }
@@ -166,6 +167,7 @@ function printWrongAlert() {
         icon: "error",
         title: "오답",
         timer: 1000,
+        showConfirmButton: false,
         text: `정답 : ${randomQuizList[problemCnt - 1].answer}`,
         didOpen: () => {
             $('body').attr("class", "");
